@@ -1,4 +1,3 @@
-const DATA_URL = "https://simulation-api-e49j.onrender.com/api/simulations/";
 type SimResponse = {
   simValues: number[];
   simMean: number;
@@ -12,17 +11,12 @@ export const getSimValues = async (
   max: number,
   daysPerMonth: number
 ) => {
+  const DATA_URL = `https://simulation-api-e49j.onrender.com/api/simulations/?distMin=${min}&distMode=${mode}&distMax=${max}&simDaysPerMonth=${daysPerMonth}`;
   const res = await fetch(DATA_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      distMin: min,
-      distMode: mode,
-      distMax: max,
-      simDaysPerMonth: daysPerMonth,
-    }),
   });
   const { simValues, simMean, simStd, simLowerCI, simUpperCI }: SimResponse =
     await res.json();
