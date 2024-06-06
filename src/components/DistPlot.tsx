@@ -1,5 +1,5 @@
 "use client";
-import { useDataContext } from "../app/context/DataContext";
+import { useDataContext } from "../context/DataContext";
 import Plot from "react-plotly.js";
 export default function DistPlot() {
   const { distMin, distMode, distMax, distValues } = useDataContext();

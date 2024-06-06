@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useState } from "react";
-import getDistValues from "../../../lib/getDistValues";
-import getSimValues from "../../../lib/getSimValues";
+import getDistValues from "../../lib/getDistValues";
+import getSimValues from "../../lib/getSimValues";
 
 type StateType = {
   distMin: number;
@@ -141,5 +141,9 @@ export function DataWrapper({ children }: { children: React.ReactNode }) {
 }
 
 export function useDataContext() {
+  const ctx = useContext(DataContext);
+  if (!ctx) {
+    throw new Error("useDataContext must be used within a DataWrapper");
+  }
   return useContext(DataContext);
 }
