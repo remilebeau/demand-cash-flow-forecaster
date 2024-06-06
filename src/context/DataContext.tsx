@@ -1,7 +1,5 @@
 "use client";
 import { createContext, useContext, useState } from "react";
-import getDistValues from "../../lib/getDistValues";
-import getSimValues from "../../lib/getSimValues";
 
 type StateType = {
   distMin: number;
@@ -28,7 +26,6 @@ type StateType = {
   setSimUpperCI: (simUpperCI: number) => void;
   setErrMsg: (errMsg: string) => void;
   setIsLoading: (isLoading: boolean) => void;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
 };
 
 const initState: StateType = {
@@ -56,7 +53,6 @@ const initState: StateType = {
   setSimUpperCI: () => {},
   setErrMsg: () => {},
   setIsLoading: () => {},
-  handleSubmit: async (e: React.FormEvent<HTMLFormElement>) => {},
 };
 
 const DataContext = createContext<StateType>(initState);
@@ -75,36 +71,6 @@ export function DataWrapper({ children }: { children: React.ReactNode }) {
   const [errMsg, setErrMsg] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setErrMsg("");
-    if (!distMin || !distMode || !distMax || !simDaysPerMonth) {
-      setErrMsg("All fields are required");
-      setIsLoading(false);
-      return;
-    }
-    if (distMode < distMin || distMode > distMax) {
-      setErrMsg("Expected value must be between minimum and maximum");
-      setIsLoading(false);
-      return;
-    }
-    const distValues = await getDistValues(distMin, distMode, distMax);
-    setDistValues(distValues);
-    const simRes = await getSimValues(
-      distMin,
-      distMode,
-      distMax,
-      simDaysPerMonth
-    );
-    setSimValues(simRes.simValues);
-    setSimMean(simRes.simMean);
-    setSimStd(simRes.simStd);
-    setSimLowerCI(simRes.simLowerCI);
-    setSimUpperCI(simRes.simUpperCI);
-    setErrMsg("");
-    setIsLoading(false);
-  };
   return (
     <DataContext.Provider
       value={{
@@ -128,7 +94,6 @@ export function DataWrapper({ children }: { children: React.ReactNode }) {
         setDistMode,
         setDistMax,
         setSimDaysPerMonth,
-        handleSubmit,
         errMsg,
         isLoading,
         setErrMsg,
