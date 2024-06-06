@@ -1,8 +1,10 @@
 import dynamic from "next/dynamic";
-import DataForm from "@/components/DataForm";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 
 export default function HomePage() {
+  const DataForm = dynamic(() => import("@/components/DataForm"), {
+    ssr: false,
+  });
   const DistPlot = dynamic(() => import("@/components/DistPlot"), {
     ssr: false,
   });
