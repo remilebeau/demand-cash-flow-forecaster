@@ -1,4 +1,5 @@
-import { useDataContext } from "../context/DataContext";
+"use client";
+import { useDataContext } from "../app/context/DataContext";
 export default function SimStats() {
   const { simMean, simStd, simLowerCI, simUpperCI } = useDataContext();
   return (
