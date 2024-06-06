@@ -1,8 +1,18 @@
 "use client";
-import { useDataContext } from "../context/DataContext";
 import Plot from "react-plotly.js";
-export default function DistPlot() {
-  const { distMin, distMode, distMax, distValues } = useDataContext();
+
+type Props = {
+  distMin: number;
+  distMode: number;
+  distMax: number;
+  distValues: number[];
+};
+export default function DistPlot({
+  distMin,
+  distMode,
+  distMax,
+  distValues,
+}: Props) {
   return (
     <Plot
       className="bg-black"

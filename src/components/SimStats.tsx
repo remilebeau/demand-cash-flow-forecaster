@@ -1,7 +1,17 @@
 "use client";
-import { useDataContext } from "../context/DataContext";
-export default function SimStats() {
-  const { simMean, simStd, simLowerCI, simUpperCI } = useDataContext();
+
+type Props = {
+  simMean: number;
+  simStd: number;
+  simLowerCI: number;
+  simUpperCI: number;
+};
+export default function SimStats({
+  simMean,
+  simStd,
+  simLowerCI,
+  simUpperCI,
+}: Props) {
   return (
     <section className="flex flex-col">
       <p>Mean: {simMean}</p>

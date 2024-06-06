@@ -1,9 +1,20 @@
 "use client";
-import { useDataContext } from "../context/DataContext";
 import Plot from "react-plotly.js";
-export default function SimPlot() {
-  const { distMin, distMode, distMax, simDaysPerMonth, simValues } =
-    useDataContext();
+
+type Props = {
+  distMin: number;
+  distMode: number;
+  distMax: number;
+  simDaysPerMonth: number;
+  simValues: number[];
+};
+export default function SimPlot({
+  distMin,
+  distMode,
+  distMax,
+  simDaysPerMonth,
+  simValues,
+}: Props) {
   return (
     <Plot
       className="bg-black"
