@@ -6,10 +6,10 @@ type SimResponse = {
   simUpperCI: number;
 };
 export const getSimValues = async (
-  min: number,
-  mode: number,
-  max: number,
-  daysPerMonth: number
+  min: string,
+  mode: string,
+  max: string,
+  daysPerMonth: string
 ) => {
   const DATA_URL = `https://simulation-api-e49j.onrender.com/api/simulations/?distMin=${min}&distMode=${mode}&distMax=${max}&simDaysPerMonth=${daysPerMonth}`;
   const res = await fetch(DATA_URL, {

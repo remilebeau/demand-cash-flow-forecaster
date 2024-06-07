@@ -2,11 +2,12 @@
 import Plot from "react-plotly.js";
 
 type Props = {
-  distMin: number;
-  distMode: number;
-  distMax: number;
+  distMin: string;
+  distMode: string;
+  distMax: string;
   distValues: number[];
 };
+
 export default function DistPlot({
   distMin,
   distMode,

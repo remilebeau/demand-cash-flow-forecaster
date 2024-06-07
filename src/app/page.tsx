@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import getDistValues from "../lib/getDistValues";
 import getSimValues from "../lib/getSimValues";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
   const DistPlot = dynamic(() => import("@/components/DistPlot"), {
@@ -18,11 +19,11 @@ export default function HomePage() {
   const SimStats = dynamic(() => import("@/components/SimStats"), {
     ssr: false,
   });
-  const [distMin, setDistMin] = useState(0);
-  const [distMode, setDistMode] = useState(0);
-  const [distMax, setDistMax] = useState(0);
+  const [distMin, setDistMin] = useState("");
+  const [distMode, setDistMode] = useState("");
+  const [distMax, setDistMax] = useState("");
   const [distValues, setDistValues] = useState<number[]>([]);
-  const [simDaysPerMonth, setSimDaysPerMonth] = useState(0);
+  const [simDaysPerMonth, setSimDaysPerMonth] = useState("");
   const [simValues, setSimValues] = useState<number[]>([]);
   const [simMean, setSimMean] = useState(0);
   const [simStd, setSimStd] = useState(0);
@@ -30,17 +31,26 @@ export default function HomePage() {
   const [simUpperCI, setSimUpperCI] = useState(0);
   const [errMsg, setErrMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     setErrMsg("");
-    if (!distMin || !distMode || !distMax || !simDaysPerMonth) {
+    if (
+      !Number(distMin) ||
+      !Number(distMode) ||
+      !Number(distMax) ||
+      !Number(simDaysPerMonth)
+    ) {
       setErrMsg("All fields are required");
       setIsLoading(false);
       return;
     }
-    if (distMode < distMin || distMode > distMax) {
+    if (
+      Number(distMode) < Number(distMin) ||
+      Number(distMode) > Number(distMax)
+    ) {
       setErrMsg("Expected value must be between minimum and maximum");
       setIsLoading(false);
       return;
@@ -76,7 +86,7 @@ export default function HomePage() {
             type="number"
             value={distMin}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setDistMin(parseInt(e.target.value) || 0)
+              setDistMin(e.target.value)
             }
           />
           <Label htmlFor="distMode" className="text-xl">
@@ -88,7 +98,7 @@ export default function HomePage() {
             type="number"
             value={distMode}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setDistMode(parseInt(e.target.value) || 0)
+              setDistMode(e.target.value)
             }
           />
           <Label htmlFor="distMax" className="text-xl">
@@ -100,7 +110,7 @@ export default function HomePage() {
             type="number"
             value={distMax}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setDistMax(parseInt(e.target.value) || 0)
+              setDistMax(e.target.value)
             }
           />
           <Label htmlFor="simDaysPerMonth" className="text-xl">
@@ -112,7 +122,7 @@ export default function HomePage() {
             type="number"
             value={simDaysPerMonth}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setSimDaysPerMonth(parseInt(e.target.value) || 0)
+              setSimDaysPerMonth(e.target.value)
             }
           />
           <Button type="submit" className="text-xl">

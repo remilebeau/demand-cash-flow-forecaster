@@ -2,10 +2,10 @@
 import Plot from "react-plotly.js";
 
 type Props = {
-  distMin: number;
-  distMode: number;
-  distMax: number;
-  simDaysPerMonth: number;
+  distMin: string;
+  distMode: string;
+  distMax: string;
+  simDaysPerMonth: string;
   simValues: number[];
 };
 export default function SimPlot({
