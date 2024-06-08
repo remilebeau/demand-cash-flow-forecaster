@@ -141,12 +141,7 @@ export default function HomePage() {
               simDaysPerMonth={simDaysPerMonth}
               simValues={simValues}
             />
-            <SimStats
-              simMean={simMean}
-              simStd={simStd}
-              simLowerCI={simLowerCI}
-              simUpperCI={simUpperCI}
-            />
+            <SimStats simValues={simValues} />
           </>
         )}
       </main>
