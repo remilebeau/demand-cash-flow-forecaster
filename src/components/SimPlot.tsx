@@ -1,4 +1,3 @@
-"use client";
 import Plot from "react-plotly.js";
 
 type Props = {
