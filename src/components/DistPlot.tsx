@@ -1,17 +1,8 @@
+import { useDataContext } from "@/context/DataContext";
 import Plot from "react-plotly.js";
 
-type Props = {
-  distMin: number;
-  distMode: number;
-  distMax: number;
-  distValues: number[];
-};
-export default function DistPlot({
-  distMin,
-  distMode,
-  distMax,
-  distValues,
-}: Props) {
+export default function DistPlot() {
+  const { distValues } = useDataContext();
   return (
     <Plot
       className="bg-black"
@@ -24,7 +15,7 @@ export default function DistPlot({
       layout={{
         width: 600,
         height: 600,
-        title: `Distribution Values<br>Daily Min: $${distMin}, Daily Mode: $${distMode},<br>Daily Max: $${distMax}`,
+        title: "Distribution Values",
         plot_bgcolor: "black",
         paper_bgcolor: "black",
         font: { color: "white" },
