@@ -18,11 +18,11 @@ export default function HomePage() {
   const SimStats = dynamic(() => import("@/components/SimStats"), {
     ssr: false,
   });
-  const [distMin, setDistMin] = useState(0);
-  const [distMode, setDistMode] = useState(0);
-  const [distMax, setDistMax] = useState(0);
+  const [distMin, setDistMin] = useState<number>();
+  const [distMode, setDistMode] = useState<number>();
+  const [distMax, setDistMax] = useState<number>();
   const [distValues, setDistValues] = useState<number[]>([]);
-  const [simDaysPerMonth, setSimDaysPerMonth] = useState(0);
+  const [simDaysPerMonth, setSimDaysPerMonth] = useState<number>();
   const [simValues, setSimValues] = useState<number[]>([]);
   const [errMsg, setErrMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -115,7 +115,7 @@ export default function HomePage() {
             <p>The first request may take up to 60 seconds.</p>
           </>
         )}
-        {distValues && distValues.length > 0 && (
+        {distValues && distMax && distMode && distMin && (
           <DistPlot
             distValues={distValues}
             distMax={distMax}
@@ -123,7 +123,7 @@ export default function HomePage() {
             distMin={distMin}
           />
         )}
-        {simValues && simValues.length > 0 && (
+        {simValues && simDaysPerMonth && distMin && distMode && distMax && (
           <>
             <SimPlot
               distMin={distMin}
