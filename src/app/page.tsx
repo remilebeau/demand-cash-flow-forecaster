@@ -65,7 +65,7 @@ export default function HomePage() {
             type="number"
             value={distMin}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setDistMin(parseInt(e.target.value) || 0)
+              setDistMin(parseInt(e.target.value))
             }
           />
           <Label htmlFor="distMode" className="text-xl">
@@ -77,7 +77,7 @@ export default function HomePage() {
             type="number"
             value={distMode}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setDistMode(parseInt(e.target.value) || 0)
+              setDistMode(parseInt(e.target.value))
             }
           />
           <Label htmlFor="distMax" className="text-xl">
@@ -89,7 +89,7 @@ export default function HomePage() {
             type="number"
             value={distMax}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setDistMax(parseInt(e.target.value) || 0)
+              setDistMax(parseInt(e.target.value))
             }
           />
           <Label htmlFor="simDaysPerMonth" className="text-xl">
@@ -101,7 +101,7 @@ export default function HomePage() {
             type="number"
             value={simDaysPerMonth}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setSimDaysPerMonth(parseInt(e.target.value) || 0)
+              setSimDaysPerMonth(parseInt(e.target.value))
             }
           />
           <Button type="submit" className="text-xl">
