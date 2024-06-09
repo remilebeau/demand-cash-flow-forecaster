@@ -1,10 +1,6 @@
 const DATA_URL = "https://simulation-api-e49j.onrender.com/api/simulations/";
 type SimResponse = {
   simValues: number[];
-  simMean: number;
-  simStd: number;
-  simLowerCI: number;
-  simUpperCI: number;
 };
 export const getSimValues = async (
   min: number,
@@ -24,14 +20,9 @@ export const getSimValues = async (
       simDaysPerMonth: daysPerMonth,
     }),
   });
-  const { simValues, simMean, simStd, simLowerCI, simUpperCI }: SimResponse =
-    await res.json();
+  const { simValues }: SimResponse = await res.json();
   return {
     simValues,
-    simMean,
-    simStd,
-    simLowerCI,
-    simUpperCI,
   };
 };
 

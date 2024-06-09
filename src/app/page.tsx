@@ -1,12 +1,12 @@
 "use client";
 import dynamic from "next/dynamic";
-import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
+import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import getDistValues from "../lib/getDistValues";
-import getSimValues from "../lib/getSimValues";
-import { useState } from "react";
+import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
+import getDistValues from "@/lib/getDistValues";
+import getSimValues from "@/lib/getSimValues";
 
 export default function HomePage() {
   const DistPlot = dynamic(() => import("@/components/DistPlot"), {
@@ -24,13 +24,8 @@ export default function HomePage() {
   const [distValues, setDistValues] = useState<number[]>([]);
   const [simDaysPerMonth, setSimDaysPerMonth] = useState(0);
   const [simValues, setSimValues] = useState<number[]>([]);
-  const [simMean, setSimMean] = useState(0);
-  const [simStd, setSimStd] = useState(0);
-  const [simLowerCI, setSimLowerCI] = useState(0);
-  const [simUpperCI, setSimUpperCI] = useState(0);
   const [errMsg, setErrMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
@@ -45,27 +40,21 @@ export default function HomePage() {
       setIsLoading(false);
       return;
     }
-    const distValues = await getDistValues(distMin, distMode, distMax);
-    setDistValues(distValues);
-    const simRes = await getSimValues(
+    const distResponse = await getDistValues(distMin, distMode, distMax);
+    setDistValues(distResponse);
+    const simResponse = await getSimValues(
       distMin,
       distMode,
       distMax,
       simDaysPerMonth
     );
-    setSimValues(simRes.simValues);
-    setSimMean(simRes.simMean);
-    setSimStd(simRes.simStd);
-    setSimLowerCI(simRes.simLowerCI);
-    setSimUpperCI(simRes.simUpperCI);
-    setErrMsg("");
+    setSimValues(simResponse.simValues);
     setIsLoading(false);
   };
 
   return (
     <>
       <main className="flex flex-col max-w-md mx-auto justify-center items-center gap-2">
-        {/* data form */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-3 m-8">
           <Label htmlFor="distMin" className="text-xl">
             Minimum Value:
@@ -119,21 +108,18 @@ export default function HomePage() {
             Submit
           </Button>
         </form>
-        {errMsg && <p className="text-red-500 font-bold">{errMsg}</p>}
-        {isLoading && (
-          <>
-            <p>Loading...</p>
-            <p>The first request may take up to 60 seconds.</p>
-          </>
+        {errMsg && <p className="text-red-500">{errMsg}</p>}
+        {isLoading && <p>Loading...</p>}
+        {distValues && distValues.length > 0 && (
+          <DistPlot
+            distValues={distValues}
+            distMax={distMax}
+            distMode={distMode}
+            distMin={distMin}
+          />
         )}
         {simValues && simValues.length > 0 && (
           <>
-            <DistPlot
-              distMin={distMin}
-              distMode={distMode}
-              distMax={distMax}
-              distValues={distValues}
-            />
             <SimPlot
               distMin={distMin}
               distMode={distMode}
