@@ -109,7 +109,12 @@ export default function HomePage() {
           </Button>
         </form>
         {errMsg && <p className="text-red-500">{errMsg}</p>}
-        {isLoading && <p>Loading...</p>}
+        {isLoading && (
+          <>
+            <p>Loading...</p>
+            <p>The first request may take up to 60 seconds.</p>
+          </>
+        )}
         {distValues && distValues.length > 0 && (
           <DistPlot
             distValues={distValues}
