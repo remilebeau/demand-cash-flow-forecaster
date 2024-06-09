@@ -13,8 +13,7 @@ export default function DataForm() {
   const [simDaysPerMonth, setSimDaysPerMonth] = useState<number>();
   const [errMsg, setErrMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { distValues, setDistValues, simValues, setSimValues } =
-    useDataContext();
+  const { setDistValues, setSimValues } = useDataContext();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
