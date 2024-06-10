@@ -1,6 +1,8 @@
 const DATA_URL =
   "https://simulation-api-e49j.onrender.com/api/simulations/stats/";
 type StatsResponse = {
+  simMin: number;
+  simMax: number;
   simMean: number;
   simStd: number;
   simQ1: number;
@@ -22,6 +24,8 @@ export const getSimStats = async (
     }),
   });
   const {
+    simMin,
+    simMax,
     simMean,
     simStd,
     simQ1,
@@ -31,6 +35,8 @@ export const getSimStats = async (
     upperCI,
   }: StatsResponse = await res.json();
   return {
+    simMin,
+    simMax,
     simMean,
     simStd,
     simQ1,

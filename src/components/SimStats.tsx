@@ -7,6 +7,8 @@ type Props = {
 };
 
 export default function SimStats({ simValues }: Props) {
+  const [simMin, setSimMin] = useState(0);
+  const [simMax, setSimMax] = useState(0);
   const [simMean, setSimMean] = useState(0);
   const [simQ1, setSimQ1] = useState(0);
   const [simQ2, setSimQ2] = useState(0);
@@ -15,6 +17,8 @@ export default function SimStats({ simValues }: Props) {
   const [upperCI, setUpperCI] = useState(0);
   useEffect(() => {
     getSimStats(simValues).then((data) => {
+      setSimMin(data.simMin);
+      setSimMax(data.simMax);
       setSimMean(data.simMean);
       setSimQ1(data.simQ1);
       setSimQ2(data.simQ2);
@@ -30,9 +34,11 @@ export default function SimStats({ simValues }: Props) {
       <p>
         95% Confidence Interval: {lowerCI} to {upperCI}
       </p>
+      <p>Min: {simMin}</p>
       <p>25th Percentile: {simQ1}</p>
       <p>50th Percentile: {simQ2}</p>
       <p>75th Percentile: {simQ3}</p>
+      <p>Max: {simMax}</p>
     </section>
   );
 }
