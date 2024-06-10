@@ -1,5 +1,4 @@
 import Plot from "react-plotly.js";
-import getDistValues from "@/lib/getDistValues";
 
 type Props = {
   distValues: number[];
