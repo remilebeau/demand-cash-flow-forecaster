@@ -20,8 +20,7 @@ export default function SimPlot({ simValues, displayDistValues }: Props) {
         },
       ]}
       layout={{
-        width: 600,
-        height: 600,
+        autosize: true,
         title: `Simulated Annual Cash Flow<br>dailyMin: $${displayDistValues.distMin}, dailyMode: $${displayDistValues.distMode}, dailyMax: $${displayDistValues.distMax}`,
         xaxis: { title: "Annual Cash Flow" },
         yaxis: { title: "Frequency" },

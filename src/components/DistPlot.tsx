@@ -20,8 +20,7 @@ export default function DistPlot({ distValues, displayDistValues }: Props) {
         },
       ]}
       layout={{
-        width: 600,
-        height: 600,
+        autosize: true,
         title: `Triangular Distribution for Daily Cash Flow<br>dailyMin: $${displayDistValues.distMin}, dailyMode: $${displayDistValues.distMode}, dailyMax: $${displayDistValues.distMax}`,
         plot_bgcolor: "black",
         paper_bgcolor: "black",

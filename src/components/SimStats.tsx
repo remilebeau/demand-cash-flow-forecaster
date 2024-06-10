@@ -28,7 +28,7 @@ export default function SimStats({ simValues }: Props) {
     });
   }, [simValues]);
   return (
-    <section className="flex flex-col border rounded-md p-2">
+    <section className="flex flex-col border rounded-md p-2 w-full">
       <h2>Simulation Statistics</h2>
       <p>Mean: {simMean}</p>
       <p>
