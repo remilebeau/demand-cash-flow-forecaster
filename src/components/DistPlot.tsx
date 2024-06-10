@@ -1,8 +1,11 @@
-import { useDataContext } from "@/context/DataContext";
 import Plot from "react-plotly.js";
+import getDistValues from "@/lib/getDistValues";
 
-export default function DistPlot() {
-  const { distValues } = useDataContext();
+type Props = {
+  distValues: number[];
+};
+
+export default function DistPlot({ distValues }: Props) {
   return (
     <Plot
       className="bg-black"

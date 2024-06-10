@@ -1,10 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import getSimStats from "@/lib/getSimStats";
-import { useDataContext } from "@/context/DataContext";
 
-export default function SimStats() {
-  const { simValues } = useDataContext();
+type Props = {
+  simValues: number[];
+};
+
+export default function SimStats({ simValues }: Props) {
   const [simMean, setSimMean] = useState(0);
   const [simQ1, setSimQ1] = useState(0);
   const [simQ2, setSimQ2] = useState(0);

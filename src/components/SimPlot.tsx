@@ -1,8 +1,10 @@
-import { useDataContext } from "@/context/DataContext";
 import Plot from "react-plotly.js";
 
-export default function SimPlot() {
-  const { simValues } = useDataContext();
+type Props = {
+  simValues: number[];
+};
+
+export default function SimPlot({ simValues }: Props) {
   return (
     <Plot
       className="bg-black"
