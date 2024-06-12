@@ -28,17 +28,38 @@ export default function SimStats({ simValues }: Props) {
     });
   }, [simValues]);
   return (
-    <section className="flex flex-col border rounded-md p-2 w-full">
-      <h2>Simulation Statistics</h2>
-      <p>Mean: {simMean}</p>
-      <p>
-        95% Confidence Interval: {lowerCI} to {upperCI}
-      </p>
-      <p>Min: {simMin}</p>
-      <p>25th Percentile: {simQ1}</p>
-      <p>50th Percentile: {simQ2}</p>
-      <p>75th Percentile: {simQ3}</p>
-      <p>Max: {simMax}</p>
-    </section>
+    <article className="flex flex-col border rounded-md p-2 w-full">
+      <h2 className="text-center">Simulation Statistics</h2>
+      <section id="mean" className="flex flex-row justify-between">
+        <p>Mean:</p>
+        <p>{simMean}</p>
+      </section>
+      <section id="ci" className="flex flex-row text-right justify-between">
+        <p className="text-left">95% Confidence Interval for Mean:</p>
+        <p>
+          [{lowerCI}, {upperCI}]
+        </p>
+      </section>
+      <section id="min" className="flex flex-row justify-between">
+        <p>Minimum:</p>
+        <p>{simMin}</p>
+      </section>
+      <section id="25p" className="flex flex-row justify-between">
+        <p>25th Percentile:</p>
+        <p>{simQ1}</p>
+      </section>
+      <section id="50p" className="flex flex-row justify-between">
+        <p>50th Percentile:</p>
+        <p>{simQ2}</p>
+      </section>
+      <section id="75p" className="flex flex-row justify-between">
+        <p>75th Percentile:</p>
+        <p>{simQ3}</p>
+      </section>
+      <section id="max" className="flex flex-row justify-between">
+        <p>Maximum:</p>
+        <p>{simMax}</p>
+      </section>
+    </article>
   );
 }

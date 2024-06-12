@@ -12,7 +12,7 @@ type Props = {
 export default function DistPlot({ distValues, displayDistValues }: Props) {
   return (
     <Plot
-      className="bg-black"
+      className="bg-black w-full"
       data={[
         {
           x: distValues,
@@ -21,7 +21,7 @@ export default function DistPlot({ distValues, displayDistValues }: Props) {
       ]}
       layout={{
         autosize: true,
-        title: `Triangular Distribution for Daily Cash Flow<br>dailyMin: $${displayDistValues.distMin}, dailyMode: $${displayDistValues.distMode}, dailyMax: $${displayDistValues.distMax}`,
+        title: `Daily Cash Flow<br>Min: $${displayDistValues.distMin}, Mode: $${displayDistValues.distMode}<br>Max: $${displayDistValues.distMax}`,
         plot_bgcolor: "black",
         paper_bgcolor: "black",
         font: { color: "white" },
