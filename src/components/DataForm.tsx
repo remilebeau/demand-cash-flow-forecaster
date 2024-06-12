@@ -62,8 +62,14 @@ export default function DataForm() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 m-8">
+    <section className="flex flex-col gap-4 m-8">
+      <h1 className="text-3xl font-bold">Cash Flow Simulator</h1>
+      <h2 className="text-2xl">
+        Enter a daily minimum, mode, maximum, and days per month. These values
+        will be used to create a triangular distribution. And from that
+        distribution, 1000 simulations of yearly cash flow.
+      </h2>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <Label htmlFor="distMin" className="text-xl">
           Minimum Value:
         </Label>
@@ -137,6 +143,6 @@ export default function DataForm() {
           <SimStats simValues={simValues} />
         </>
       )}
-    </>
+    </section>
   );
 }
