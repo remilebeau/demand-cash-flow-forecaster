@@ -1,5 +1,8 @@
 const DATA_URL =
-  "https://simulation-api-e49j.onrender.com/api/simulations/stats/";
+  process.env.NODE_ENV === "production"
+    ? "https://simulation-api-e49j.onrender.com/api/simulations/stats/"
+    : "http://localhost:8000/api/simulations/stats/";
+
 type StatsResponse = {
   simMin: number;
   simMax: number;

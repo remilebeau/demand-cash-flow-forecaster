@@ -20,8 +20,8 @@ export default function DataForm() {
   const [distMin, setDistMin] = useState<number>();
   const [distMode, setDistMode] = useState<number>();
   const [distMax, setDistMax] = useState<number>();
-  const [distValues, setDistValues] = useState<number[]>([]);
-  const [simValues, setSimValues] = useState<number[]>([]);
+  const [distValues, setDistValues] = useState<number[] | undefined>(undefined);
+  const [simValues, setSimValues] = useState<number[] | undefined>(undefined);
   const [simDaysPerMonth, setSimDaysPerMonth] = useState<number>();
   const [errMsg, setErrMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +34,12 @@ export default function DataForm() {
     e.preventDefault();
     setIsLoading(true);
     setErrMsg("");
-    if (!distMin || !distMode || !distMax || !simDaysPerMonth) {
+    if (
+      distMin === undefined ||
+      distMode === undefined ||
+      distMax === undefined ||
+      simDaysPerMonth === undefined
+    ) {
       setErrMsg("All fields are required");
       setIsLoading(false);
       return;
@@ -130,7 +135,7 @@ export default function DataForm() {
           <p>The first request may take up to 60 seconds.</p>
         </>
       )}
-      {distValues.length > 0 && simValues.length > 0 && (
+      {distValues && simValues && (
         <>
           <DistPlot
             distValues={distValues}

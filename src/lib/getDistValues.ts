@@ -1,4 +1,7 @@
-const DATA_URL = "https://simulation-api-e49j.onrender.com/api/distributions/";
+const DATA_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://simulation-api-e49j.onrender.com/api/distributions/"
+    : "http://localhost:8000/api/distributions/";
 type DistResponse = {
   distValues: number[];
 };
