@@ -67,7 +67,7 @@ export default function DataForm() {
   };
 
   return (
-    <>
+    <article className="flex flex-col border border-border rounded-md p-4 gap-4">
       <h1 className="text-3xl font-bold">Cash Flow Simulator</h1>
       <h2 className="text-2xl">
         Enter a daily minimum, mode, maximum, and days per month. These values
@@ -148,6 +148,6 @@ export default function DataForm() {
           <SimStats simValues={simValues} />
         </>
       )}
-    </>
+    </article>
   );
 }
