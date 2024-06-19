@@ -8,7 +8,7 @@ export default function HomePage() {
   });
   return (
     <>
-      <main className="flex flex-col max-w-4xl mx-auto gap-8 p-8">
+      <main className="mx-auto flex max-w-4xl flex-col gap-8 p-8">
         <DataForm />
         <ThemeSwitch />
       </main>
