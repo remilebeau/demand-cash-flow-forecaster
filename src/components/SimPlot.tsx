@@ -12,7 +12,7 @@ type Props = {
 export default function SimPlot({ simValues, displayDistValues }: Props) {
   return (
     <Plot
-      className="bg-black w-full"
+      className="w-full bg-black"
       data={[
         {
           x: simValues,

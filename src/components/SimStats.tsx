@@ -28,13 +28,13 @@ export default function SimStats({ simValues }: Props) {
     });
   }, [simValues]);
   return (
-    <article className="flex flex-col border rounded-md p-2 w-full">
+    <article className="flex w-full flex-col rounded-md border p-2">
       <h2 className="text-center">Simulation Statistics</h2>
       <section id="mean" className="flex flex-row justify-between">
         <p>Mean:</p>
         <p>{simMean}</p>
       </section>
-      <section id="ci" className="flex flex-row text-right justify-between">
+      <section id="ci" className="flex flex-row justify-between text-right">
         <p className="text-left">95% Confidence Interval for Mean:</p>
         <p>
           [{lowerCI}, {upperCI}]
