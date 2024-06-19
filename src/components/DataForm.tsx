@@ -34,6 +34,7 @@ export default function DataForm() {
     e.preventDefault();
     setIsLoading(true);
     setErrMsg("");
+    // check for undefined
     if (
       distMin === undefined ||
       distMode === undefined ||
@@ -44,8 +45,15 @@ export default function DataForm() {
       setIsLoading(false);
       return;
     }
+    // check for min <= mode <= max
     if (distMode < distMin || distMode > distMax) {
       setErrMsg("Expected value must be between minimum and maximum");
+      setIsLoading(false);
+      return;
+    }
+    // check for min < max
+    if (distMin >= distMax) {
+      setErrMsg("Minimum must be less than maximum");
       setIsLoading(false);
       return;
     }
