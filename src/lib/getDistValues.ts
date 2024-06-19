@@ -2,14 +2,8 @@ const DATA_URL =
   process.env.NODE_ENV === "production"
     ? "https://simulation-api-e49j.onrender.com/api/distributions/"
     : "http://localhost:8000/api/distributions/";
-type DistResponse = {
-  distValues: number[];
-};
-export const getDistValues = async (
-  min: number,
-  mode: number,
-  max: number
-): Promise<number[]> => {
+
+export const getDistValues = async (min: number, mode: number, max: number) => {
   const res = await fetch(DATA_URL, {
     method: "POST",
     headers: {
@@ -21,8 +15,7 @@ export const getDistValues = async (
       distMax: max,
     }),
   });
-  const { distValues }: DistResponse = await res.json();
-  return distValues;
+  return res.json();
 };
 
 export default getDistValues;

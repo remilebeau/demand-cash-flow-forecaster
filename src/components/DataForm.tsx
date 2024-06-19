@@ -49,15 +49,15 @@ export default function DataForm() {
       setIsLoading(false);
       return;
     }
-    const distResponse = await getDistValues(distMin, distMode, distMax);
-    setDistValues(distResponse);
-    const simResponse = await getSimValues(
+    const { distValues } = await getDistValues(distMin, distMode, distMax);
+    setDistValues(distValues);
+    const { simValues } = await getSimValues(
       distMin,
       distMode,
       distMax,
       simDaysPerMonth,
     );
-    setSimValues(simResponse.simValues);
+    setSimValues(simValues);
     setIsLoading(false);
     setDisplayDistValues({
       distMin: distMin,
