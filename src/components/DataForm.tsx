@@ -2,34 +2,18 @@ import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import getDistValues from "@/lib/getDistValues";
-import getSimValues from "@/lib/getSimValues";
-import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 
 export default function DataForm() {
-  const DistPlot = dynamic(() => import("@/components/DistPlot"), {
-    ssr: false,
-  });
-  const SimPlot = dynamic(() => import("@/components/SimPlot"), {
-    ssr: false,
-  });
-  const SimStats = dynamic(() => import("@/components/SimStats"), {
-    ssr: false,
-  });
+  const router = useRouter();
 
   const [distMin, setDistMin] = useState<number>();
   const [distMode, setDistMode] = useState<number>();
   const [distMax, setDistMax] = useState<number>();
-  const [distValues, setDistValues] = useState<number[] | undefined>(undefined);
-  const [simValues, setSimValues] = useState<number[] | undefined>(undefined);
-  const [simDaysPerMonth, setSimDaysPerMonth] = useState<number>();
+  const [simDaysPerYear, setSimDaysPerYear] = useState<number>();
   const [errMsg, setErrMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [displayDistValues, setDisplayDistValues] = useState({
-    distMin: 0,
-    distMode: 0,
-    distMax: 0,
-  });
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
@@ -39,7 +23,7 @@ export default function DataForm() {
       distMin === undefined ||
       distMode === undefined ||
       distMax === undefined ||
-      simDaysPerMonth === undefined
+      simDaysPerYear === undefined
     ) {
       setErrMsg("All fields are required");
       setIsLoading(false);
@@ -57,21 +41,11 @@ export default function DataForm() {
       setIsLoading(false);
       return;
     }
-    const { distValues } = await getDistValues(distMin, distMode, distMax);
-    setDistValues(distValues);
-    const { simValues } = await getSimValues(
-      distMin,
-      distMode,
-      distMax,
-      simDaysPerMonth,
+
+    router.push(
+      `/results?distMin=${distMin}&distMode=${distMode}&distMax=${distMax}&simDaysPerYear=${simDaysPerYear}`,
     );
-    setSimValues(simValues);
     setIsLoading(false);
-    setDisplayDistValues({
-      distMin: distMin,
-      distMode: distMode,
-      distMax: distMax,
-    });
   };
 
   return (
@@ -119,16 +93,16 @@ export default function DataForm() {
             setDistMax(parseInt(e.target.value))
           }
         />
-        <Label htmlFor="simDaysPerMonth" className="text-xl">
+        <Label htmlFor="simDaysPerYear" className="text-xl">
           Days Per Month:
         </Label>
         <Input
           className="text-xl"
           required
           type="number"
-          value={simDaysPerMonth}
+          value={simDaysPerYear}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setSimDaysPerMonth(parseInt(e.target.value))
+            setSimDaysPerYear(parseInt(e.target.value))
           }
         />
         <Button type="submit" className="text-xl">
@@ -141,19 +115,6 @@ export default function DataForm() {
         <>
           <p>Loading...</p>
           <p>The first request may take up to 60 seconds.</p>
-        </>
-      )}
-      {distValues && simValues && (
-        <>
-          <DistPlot
-            distValues={distValues}
-            displayDistValues={displayDistValues}
-          />
-          <SimPlot
-            simValues={simValues}
-            displayDistValues={displayDistValues}
-          />
-          <SimStats simValues={simValues} />
         </>
       )}
     </article>
