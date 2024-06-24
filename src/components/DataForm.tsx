@@ -1,10 +1,40 @@
+"use client";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { z } from "zod";
 
 export default function DataForm() {
+  // form schema
+
+  const formSchema = z.object({
+    distMin: z.number({
+      required_error: "Minimum is required",
+      invalid_type_error: "Minimum must be a number",
+    }),
+    distMode: z.number({
+      required_error: "Mode is required",
+      invalid_type_error: "Mode must be a number",
+    }),
+    distMax: z
+      .number({
+        required_error: "Maximum is required",
+        invalid_type_error: "Maximum must be a number",
+      })
+      // validate that min <= mode <= max and min < max
+      .refine(
+        (distMax) =>
+          !(distMin <= distMode && distMode <= distMax && distMin < distMax),
+        {
+          message:
+            "The following must be true: min <= mode <= max and min < max",
+        },
+      ),
+    simDaysPerYear: z.number({ message: "Days per year is required" }),
+  });
+
   const router = useRouter();
 
   const [distMin, setDistMin] = useState<number>();
