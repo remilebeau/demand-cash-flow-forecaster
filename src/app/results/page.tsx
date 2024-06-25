@@ -1,18 +1,9 @@
 "use client";
 import getDistValues from "@/lib/getDistValues";
 import getSimValues from "@/lib/getSimValues";
-import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
-
-const DistPlot = dynamic(() => import("@/components/DistPlot"), {
-  ssr: false,
-});
-const SimPlotWithStats = dynamic(
-  () => import("@/components/SimPlotWithStats"),
-  {
-    ssr: false,
-  },
-);
+import DistPlot from "@/components/DistPlot";
+import SimPlotWithStats from "@/components/SimPlotWithStats";
 
 export default async function ResultsPage() {
   const searchParams = useSearchParams();
