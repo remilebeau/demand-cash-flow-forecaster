@@ -15,7 +15,7 @@ export default async function SimPlot({ simValues }: Props) {
   if (!distMin || !distMode || !distMax || !simPeriodsPerYear) {
     return (
       <h1 className="text-3xl font-bold">
-        Missing distMin, distMode, distMax, or simPeriodsPerYear
+        Error: missing distMin, distMode, distMax, or simPeriodsPerYear
       </h1>
     );
   }
