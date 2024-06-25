@@ -72,83 +72,79 @@ export default function DataForm() {
   }
 
   return (
-    <>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
-          <FormField
-            control={form.control}
-            name="distMin"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Min</FormLabel>
-                <FormControl>
-                  <Input type="number" placeholder="Enter Minimum" {...field} />
-                </FormControl>
-                <FormDescription>
-                  The minimum cash flow per period.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+        <FormField
+          control={form.control}
+          name="distMin"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Min</FormLabel>
+              <FormControl>
+                <Input type="number" placeholder="Enter Minimum" {...field} />
+              </FormControl>
+              <FormDescription>
+                The minimum cash flow per period.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-          <FormField
-            control={form.control}
-            name="distMode"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Mode</FormLabel>
-                <FormControl>
-                  <Input type="number" placeholder="Enter Mode" {...field} />
-                </FormControl>
-                <FormDescription>
-                  The most likely cash flow per period.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <FormField
+          control={form.control}
+          name="distMode"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Mode</FormLabel>
+              <FormControl>
+                <Input type="number" placeholder="Enter Mode" {...field} />
+              </FormControl>
+              <FormDescription>
+                The most likely cash flow per period.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-          <FormField
-            control={form.control}
-            name="distMax"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Max</FormLabel>
-                <FormControl>
-                  <Input type="number" placeholder="Enter Maximum" {...field} />
-                </FormControl>
-                <FormDescription>
-                  The maximum cash flow per period.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <FormField
+          control={form.control}
+          name="distMax"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Max</FormLabel>
+              <FormControl>
+                <Input type="number" placeholder="Enter Maximum" {...field} />
+              </FormControl>
+              <FormDescription>
+                The maximum cash flow per period.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-          <FormField
-            control={form.control}
-            name="simPeriodsPerYear"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Periods per Year</FormLabel>
-                <FormControl>
-                  <Input
-                    type="number"
-                    placeholder="Enter Periods per Year"
-                    {...field}
-                  />
-                </FormControl>
-                <FormDescription>
-                  The number of periods per year.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit">Submit</Button>
-        </form>
-      </Form>
-    </>
+        <FormField
+          control={form.control}
+          name="simPeriodsPerYear"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Periods per Year</FormLabel>
+              <FormControl>
+                <Input
+                  type="number"
+                  placeholder="Enter Periods per Year"
+                  {...field}
+                />
+              </FormControl>
+              <FormDescription>The number of periods per year.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Submit</Button>
+      </form>
+    </Form>
   );
 }
