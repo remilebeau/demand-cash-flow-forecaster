@@ -13,6 +13,11 @@ export async function getDistValues(
       "Content-Type": "application/json",
     },
   });
+  if (!res.ok) {
+    throw new Error(
+      "Failed to fetch data. Check that min <= mode <= max and min < max",
+    );
+  }
   return res.json();
 }
 
