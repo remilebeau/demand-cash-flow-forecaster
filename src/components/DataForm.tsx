@@ -1,19 +1,17 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 // define form schema
 
@@ -73,19 +71,19 @@ export default function DataForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="distMin"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Min</FormLabel>
               <FormControl>
-                <Input type="number" placeholder="Enter Minimum" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Minimum demand or cash flow per period"
+                  {...field}
+                />
               </FormControl>
-              <FormDescription>
-                The minimum cash flow per period.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -96,13 +94,13 @@ export default function DataForm() {
           name="distMode"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Mode</FormLabel>
               <FormControl>
-                <Input type="number" placeholder="Enter Mode" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Most common demand or cash flow per period"
+                  {...field}
+                />
               </FormControl>
-              <FormDescription>
-                The most likely cash flow per period.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -113,13 +111,13 @@ export default function DataForm() {
           name="distMax"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Max</FormLabel>
               <FormControl>
-                <Input type="number" placeholder="Enter Maximum" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Maximum demand or cash flow per period"
+                  {...field}
+                />
               </FormControl>
-              <FormDescription>
-                The maximum cash flow per period.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -130,20 +128,20 @@ export default function DataForm() {
           name="simPeriodsPerYear"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Periods per Year</FormLabel>
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Enter Periods per Year"
+                  placeholder="Periods per Year"
                   {...field}
                 />
               </FormControl>
-              <FormDescription>The number of periods per year.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button className="w-full" type="submit">
+          Submit
+        </Button>
       </form>
     </Form>
   );

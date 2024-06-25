@@ -1,6 +1,6 @@
 "use client";
-import dynamic from "next/dynamic";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
+import dynamic from "next/dynamic";
 
 export default function HomePage() {
   const DataForm = dynamic(() => import("@/components/DataForm"), {

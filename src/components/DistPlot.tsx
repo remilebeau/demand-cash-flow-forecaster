@@ -1,5 +1,5 @@
-import Plot from "react-plotly.js";
 import { useSearchParams } from "next/navigation";
+import Plot from "react-plotly.js";
 type Props = {
   distValues: number[];
 };

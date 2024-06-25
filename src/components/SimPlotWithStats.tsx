@@ -1,6 +1,6 @@
-import Plot from "react-plotly.js";
 import getSimValues from "@/lib/getSimValues";
 import { useSearchParams } from "next/navigation";
+import Plot from "react-plotly.js";
 
 type Props = {
   simValues: number[];

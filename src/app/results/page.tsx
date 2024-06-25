@@ -1,8 +1,8 @@
 "use client";
-import dynamic from "next/dynamic";
-import { useSearchParams } from "next/navigation";
 import getDistValues from "@/lib/getDistValues";
 import getSimValues from "@/lib/getSimValues";
+import dynamic from "next/dynamic";
+import { useSearchParams } from "next/navigation";
 
 const DistPlot = dynamic(() => import("@/components/DistPlot"), {
   ssr: false,
