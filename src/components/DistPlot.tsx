@@ -27,7 +27,7 @@ export default async function DistPlot({ distValues }: Props) {
       ]}
       layout={{
         autosize: true,
-        title: `Daily Cash Flow<br>Min: $${distMin}, Mode: $${distMode}<br>Max: $${distMax}`,
+        title: `Demand / Cash Flow per Period<br>Min: ${distMin}, Mode: ${distMode}<br>Max: ${distMax}`,
         plot_bgcolor: "black",
         paper_bgcolor: "black",
         font: { color: "white" },

@@ -34,7 +34,7 @@ export default async function SimPlot({ simValues }: Props) {
         ]}
         layout={{
           autosize: true,
-          title: `Simulated Annual Cash Flow<br>dailyMin: $${distMin}, dailyMode: $${distMode},<br>dailyMax: $${distMax}`,
+          title: `Forecasted Annual Demand / Cash Flow<br>Min: ${distMin}, Mode: ${distMode},<br>Max: ${distMax}`,
           xaxis: { title: "Annual Cash Flow" },
           yaxis: { title: "Frequency" },
           plot_bgcolor: "black",
@@ -42,6 +42,7 @@ export default async function SimPlot({ simValues }: Props) {
           font: { color: "white" },
         }}
       />
+      {/* simulation stats */}
       <article className="flex w-full flex-col rounded-md border p-2">
         <h2 className="text-center">Simulation Statistics</h2>
         <section id="mean" className="flex flex-row justify-between">
