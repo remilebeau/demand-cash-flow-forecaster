@@ -1,4 +1,3 @@
-"use client";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import DataForm from "@/components/DataForm";
 
