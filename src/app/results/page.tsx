@@ -19,12 +19,17 @@ export default async function ResultsPage() {
   }
 
   const { distValues } = await getDistValues(distMin, distMode, distMax);
-  const { simValues } = await getSimValues(
-    distMin,
-    distMode,
-    distMax,
-    simPeriodsPerYear,
-  );
+  const {
+    simValues,
+    simMin,
+    simMax,
+    simMean,
+    simQ1,
+    simQ2,
+    simQ3,
+    lowerCI,
+    upperCI,
+  } = await getSimValues(distMin, distMode, distMax, simPeriodsPerYear);
 
   return (
     <>
@@ -33,7 +38,21 @@ export default async function ResultsPage() {
           <Button onClick={() => router.push("/")}>Go Back</Button>
           <h1 className="text-center text-3xl font-bold">Results</h1>
           <DistPlot distValues={distValues} />
-          <SimPlotWithStats simValues={simValues} />
+          <SimPlotWithStats
+            simValues={simValues}
+            simMin={simMin}
+            simMax={simMax}
+            simMean={simMean}
+            simQ1={simQ1}
+            simQ2={simQ2}
+            simQ3={simQ3}
+            lowerCI={lowerCI}
+            upperCI={upperCI}
+            distMin={distMin}
+            distMode={distMode}
+            distMax={distMax}
+            simPeriodsPerYear={simPeriodsPerYear}
+          />
         </main>
       )}
     </>

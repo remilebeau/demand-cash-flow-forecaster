@@ -9,13 +9,6 @@ export default async function DistPlot({ distValues }: Props) {
   const distMin = searchParams.get("distMin");
   const distMode = searchParams.get("distMode");
   const distMax = searchParams.get("distMax");
-  if (!distMin || !distMode || !distMax) {
-    return (
-      <h1 className="text-3xl font-bold">
-        Error: missing distMin, distMode, or distMax
-      </h1>
-    );
-  }
   return (
     <Plot
       className="w-full bg-black"

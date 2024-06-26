@@ -1,27 +1,36 @@
-import getSimValues from "@/lib/getSimValues";
-import { useSearchParams } from "next/navigation";
 import Plot from "react-plotly.js";
 
 type Props = {
   simValues: number[];
+  simMin: number;
+  simMax: number;
+  simMean: number;
+  simQ1: number;
+  simQ2: number;
+  simQ3: number;
+  lowerCI: number;
+  upperCI: number;
+  distMin: number;
+  distMode: number;
+  distMax: number;
+  simPeriodsPerYear: number;
 };
 
-export default async function SimPlot({ simValues }: Props) {
-  const searchParams = useSearchParams();
-  const distMin = searchParams.get("distMin");
-  const distMode = searchParams.get("distMode");
-  const distMax = searchParams.get("distMax");
-  const simPeriodsPerYear = searchParams.get("simPeriodsPerYear");
-  if (!distMin || !distMode || !distMax || !simPeriodsPerYear) {
-    return (
-      <h1 className="text-3xl font-bold">
-        Error: missing distMin, distMode, distMax, or simPeriodsPerYear
-      </h1>
-    );
-  }
-  const { simMin, simMax, simMean, simQ1, simQ2, simQ3, lowerCI, upperCI } =
-    await getSimValues(distMin, distMode, distMax, simPeriodsPerYear);
-
+export default async function SimPlotWithStats({
+  simValues,
+  simMin,
+  simMax,
+  simMean,
+  simQ1,
+  simQ2,
+  simQ3,
+  lowerCI,
+  upperCI,
+  distMin,
+  distMode,
+  distMax,
+  simPeriodsPerYear,
+}: Props) {
   return (
     <>
       <Plot
