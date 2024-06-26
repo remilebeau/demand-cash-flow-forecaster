@@ -4,6 +4,7 @@ import getSimValues from "@/lib/getSimValues";
 import { useSearchParams, useRouter } from "next/navigation";
 import DistPlot from "@/components/DistPlot";
 import SimPlotWithStats from "@/components/SimPlotWithStats";
+import { Button } from "@/components/ui/button";
 
 export default async function ResultsPage() {
   const router = useRouter();
@@ -28,10 +29,11 @@ export default async function ResultsPage() {
   return (
     <>
       {distValues && simValues && (
-        <>
+        <main className="mx-auto flex max-w-4xl flex-col gap-8 p-8">
+          <Button onClick={() => router.push("/")}>Go Back</Button>
           <DistPlot distValues={distValues} />
           <SimPlotWithStats simValues={simValues} />
-        </>
+        </main>
       )}
     </>
   );
