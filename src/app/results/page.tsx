@@ -1,12 +1,21 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import getDistValues from "@/lib/getDistValues";
 import getSimValues from "@/lib/getSimValues";
-import { useSearchParams, useRouter } from "next/navigation";
-import DistPlot from "@/components/DistPlot";
-import SimPlotWithStats from "@/components/SimPlotWithStats";
-import { Button } from "@/components/ui/button";
+import dynamic from "next/dynamic";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default async function ResultsPage() {
+  // client component imports
+  const DistPlot = dynamic(() => import("@/components/DistPlot"), {
+    ssr: false,
+  });
+  const SimPlotWithStats = dynamic(
+    () => import("@/components/SimPlotWithStats"),
+    {
+      ssr: false,
+    },
+  );
   const router = useRouter();
   const searchParams = useSearchParams();
 
