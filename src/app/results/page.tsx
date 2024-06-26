@@ -1,23 +1,20 @@
 "use client";
 import getDistValues from "@/lib/getDistValues";
 import getSimValues from "@/lib/getSimValues";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import DistPlot from "@/components/DistPlot";
 import SimPlotWithStats from "@/components/SimPlotWithStats";
 
 export default async function ResultsPage() {
+  const router = useRouter();
   const searchParams = useSearchParams();
 
-  const distMin = searchParams.get("distMin");
-  const distMode = searchParams.get("distMode");
-  const distMax = searchParams.get("distMax");
-  const simPeriodsPerYear = searchParams.get("simPeriodsPerYear");
+  const distMin = Number(searchParams.get("distMin"));
+  const distMode = Number(searchParams.get("distMode"));
+  const distMax = Number(searchParams.get("distMax"));
+  const simPeriodsPerYear = Number(searchParams.get("simPeriodsPerYear"));
   if (!distMin || !distMode || !distMax || !simPeriodsPerYear) {
-    return (
-      <h1 className="text-3xl font-bold">
-        Missing distMin, distMode, distMax, or simPeriodsPerYear
-      </h1>
-    );
+    router.push("/");
   }
 
   const { distValues } = await getDistValues(distMin, distMode, distMax);
@@ -27,6 +24,7 @@ export default async function ResultsPage() {
     distMax,
     simPeriodsPerYear,
   );
+
   return (
     <>
       {distValues && simValues && (

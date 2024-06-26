@@ -1,8 +1,8 @@
 export async function getSimValues(
-  distMin: string,
-  distMode: string,
-  distMax: string,
-  simPeriodsPerYear: string,
+  distMin: number,
+  distMode: number,
+  distMax: number,
+  simPeriodsPerYear: number,
 ) {
   const DATA_URL =
     process.env.NODE_ENV === "production"
@@ -14,11 +14,6 @@ export async function getSimValues(
       "Content-Type": "application/json",
     },
   });
-  if (!res.ok) {
-    throw new Error(
-      "Failed to fetch data. Check that min <= mode <= max and min < max",
-    );
-  }
   return res.json();
 }
 

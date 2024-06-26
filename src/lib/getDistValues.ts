@@ -1,7 +1,7 @@
 export async function getDistValues(
-  distMin: string,
-  distMode: string,
-  distMax: string,
+  distMin: number,
+  distMode: number,
+  distMax: number,
 ) {
   const DATA_URL =
     process.env.NODE_ENV === "production"
@@ -13,11 +13,6 @@ export async function getDistValues(
       "Content-Type": "application/json",
     },
   });
-  if (!res.ok) {
-    throw new Error(
-      "Failed to fetch data. Check that min <= mode <= max and min < max",
-    );
-  }
   return res.json();
 }
 
