@@ -80,7 +80,7 @@ export default function DataForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Minimum demand or cash flow per period"
+                  placeholder="Minimum demand / cash flow per period"
                   {...field}
                 />
               </FormControl>
@@ -97,7 +97,7 @@ export default function DataForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Most common demand or cash flow per period"
+                  placeholder="Expected demand / cash flow per period"
                   {...field}
                 />
               </FormControl>
@@ -114,7 +114,7 @@ export default function DataForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Maximum demand or cash flow per period"
+                  placeholder="Maximum demand / cash flow per period"
                   {...field}
                 />
               </FormControl>
@@ -131,7 +131,7 @@ export default function DataForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Periods per Year"
+                  placeholder="Periods per Year (e.g. 12 for monthly)"
                   {...field}
                 />
               </FormControl>
