@@ -54,6 +54,14 @@ export default async function SimPlotWithStats({
       {/* simulation stats */}
       <article className="flex w-full flex-col rounded-md border p-2">
         <h2 className="text-center">Simulation Statistics</h2>
+        <section id="min" className="flex flex-row justify-between">
+          <p>Minimum:</p>
+          <p>{simMin}</p>
+        </section>
+        <section id="25p" className="flex flex-row justify-between">
+          <p>25th Percentile:</p>
+          <p>{simQ1}</p>
+        </section>
         <section id="mean" className="flex flex-row justify-between">
           <p>Mean:</p>
           <p>{simMean}</p>
@@ -64,16 +72,8 @@ export default async function SimPlotWithStats({
             [{lowerCI}, {upperCI}]
           </p>
         </section>
-        <section id="min" className="flex flex-row justify-between">
-          <p>Minimum:</p>
-          <p>{simMin}</p>
-        </section>
-        <section id="25p" className="flex flex-row justify-between">
-          <p>25th Percentile:</p>
-          <p>{simQ1}</p>
-        </section>
         <section id="50p" className="flex flex-row justify-between">
-          <p>50th Percentile:</p>
+          <p>Median:</p>
           <p>{simQ2}</p>
         </section>
         <section id="75p" className="flex flex-row justify-between">
