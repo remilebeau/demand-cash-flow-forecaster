@@ -11,7 +11,6 @@ export default async function DistPlot({ distValues }: Props) {
   const distMax = searchParams.get("distMax");
   return (
     <Plot
-      className="w-full bg-black"
       data={[
         {
           x: distValues,
@@ -21,9 +20,11 @@ export default async function DistPlot({ distValues }: Props) {
       layout={{
         autosize: true,
         title: `Demand / Cash Flow per Period<br>Min: ${distMin}, Mode: ${distMode}<br>Max: ${distMax}`,
-        plot_bgcolor: "black",
-        paper_bgcolor: "black",
-        font: { color: "white" },
+        plot_bgcolor: "white",
+        paper_bgcolor: "white",
+        font: {
+          color: "black",
+        },
       }}
     />
   );

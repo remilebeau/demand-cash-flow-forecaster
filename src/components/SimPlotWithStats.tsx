@@ -34,7 +34,6 @@ export default async function SimPlotWithStats({
   return (
     <>
       <Plot
-        className="w-full bg-black"
         data={[
           {
             x: simValues,
@@ -43,12 +42,10 @@ export default async function SimPlotWithStats({
         ]}
         layout={{
           autosize: true,
-          title: `Forecasted Annual Demand / Cash Flow<br>Min: ${distMin}, Mode: ${distMode},<br>Max: ${distMax}`,
-          xaxis: { title: "Annual Cash Flow" },
-          yaxis: { title: "Frequency" },
-          plot_bgcolor: "black",
-          paper_bgcolor: "black",
-          font: { color: "white" },
+          title: `Forecasted Annual Demand / Cash Flow<br>Min: ${distMin}, Mode: ${distMode},<br>Max: ${distMax}, Periods per Year: ${simPeriodsPerYear}`,
+          plot_bgcolor: "white",
+          paper_bgcolor: "white",
+          font: { color: "black" },
         }}
       />
       {/* simulation stats */}
