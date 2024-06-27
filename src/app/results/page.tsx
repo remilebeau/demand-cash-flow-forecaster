@@ -4,6 +4,7 @@ import getDistValues from "@/lib/getDistValues";
 import getSimValues from "@/lib/getSimValues";
 import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
+import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 
 export default async function ResultsPage() {
   // client component imports
@@ -62,6 +63,7 @@ export default async function ResultsPage() {
             distMax={distMax}
             simPeriodsPerYear={simPeriodsPerYear}
           />
+          <ThemeSwitch />
         </main>
       )}
     </>
