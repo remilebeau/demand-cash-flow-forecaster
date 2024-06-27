@@ -2,7 +2,7 @@ import { Loader } from "lucide-react";
 
 export default function LoadingResults() {
   return (
-    <main className="mx-auto flex max-w-4xl flex-col gap-8 p-8">
+    <main className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-8 p-8">
       <Loader />
       <h1 className="text-3xl font-bold">Loading...</h1>
       <h1 className="text-3xl font-bold">
