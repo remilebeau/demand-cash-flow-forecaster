@@ -42,7 +42,7 @@ export default async function SimPlotWithStats({
         ]}
         layout={{
           autosize: true,
-          title: `Forecasted Annual Demand / Cash Flow<br>Min: ${distMin}, Mode: ${distMode},<br>Max: ${distMax}, Periods per Year: ${simPeriodsPerYear}`,
+          title: `Forecasted Annual Demand / Cash Flow<br>Min: ${distMin.toLocaleString("en-US")}; Mode: ${distMode.toLocaleString("en-US")};<br>Max: ${distMax.toLocaleString("en-US")}; Periods per Year: ${simPeriodsPerYear.toLocaleString("en-US")}`,
           plot_bgcolor: "white",
           paper_bgcolor: "white",
           font: { color: "black" },
@@ -53,33 +53,34 @@ export default async function SimPlotWithStats({
         <h2 className="text-center">Simulation Statistics</h2>
         <section id="min" className="flex flex-row justify-between">
           <p>Minimum:</p>
-          <p>{simMin}</p>
+          <p>{simMin.toLocaleString("en-US")}</p>
         </section>
         <section id="25p" className="flex flex-row justify-between">
           <p>25th Percentile:</p>
-          <p>{simQ1}</p>
+          <p>{simQ1.toLocaleString("en-US")}</p>
         </section>
         <section id="mean" className="flex flex-row justify-between">
           <p>Mean:</p>
-          <p>{simMean}</p>
+          <p>{simMean.toLocaleString("en-US")}</p>
         </section>
         <section id="ci" className="flex flex-row justify-between text-right">
           <p className="text-left">95% Confidence Interval for Mean:</p>
           <p>
-            [{lowerCI}, {upperCI}]
+            [{lowerCI.toLocaleString("en-US")} to{" "}
+            {upperCI.toLocaleString("en-US")}]
           </p>
         </section>
         <section id="50p" className="flex flex-row justify-between">
           <p>Median:</p>
-          <p>{simQ2}</p>
+          <p>{simQ2.toLocaleString("en-US")}</p>
         </section>
         <section id="75p" className="flex flex-row justify-between">
           <p>75th Percentile:</p>
-          <p>{simQ3}</p>
+          <p>{simQ3.toLocaleString("en-US")}</p>
         </section>
         <section id="max" className="flex flex-row justify-between">
           <p>Maximum:</p>
-          <p>{simMax}</p>
+          <p>{simMax.toLocaleString("en-US")}</p>
         </section>
       </article>
     </>

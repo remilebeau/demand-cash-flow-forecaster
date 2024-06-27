@@ -47,7 +47,12 @@ export default async function ResultsPage() {
         <main className="mx-auto flex max-w-4xl flex-col gap-8 p-8">
           <Button onClick={() => router.push("/")}>Go Back</Button>
           <h1 className="text-center text-3xl font-bold">Results</h1>
-          <DistPlot distValues={distValues} />
+          <DistPlot
+            distValues={distValues}
+            distMin={distMin}
+            distMode={distMode}
+            distMax={distMax}
+          />
           <SimPlotWithStats
             simValues={simValues}
             simMin={simMin}
