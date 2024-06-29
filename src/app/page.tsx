@@ -1,5 +1,5 @@
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
-import DataForm from "@/components/DataForm";
+import SelectDistribution from "@/components/SelectDistribution";
 
 export default function HomePage() {
   return (
@@ -11,7 +11,7 @@ export default function HomePage() {
         of a triangular distribution, these values will be used to forecast
         annual demand / cash flow.
       </p>
-      <DataForm />
+      <SelectDistribution />
       <ThemeSwitch />
     </main>
   );
