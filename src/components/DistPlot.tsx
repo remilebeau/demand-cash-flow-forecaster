@@ -1,17 +1,9 @@
 import Plot from "react-plotly.js";
 type Props = {
   distValues: number[];
-  distMin: number;
-  distMode: number;
-  distMax: number;
 };
 
-export default async function DistPlot({
-  distValues,
-  distMin,
-  distMode,
-  distMax,
-}: Props) {
+export default async function DistPlot({ distValues }: Props) {
   return (
     <Plot
       data={[
@@ -22,7 +14,6 @@ export default async function DistPlot({
       ]}
       layout={{
         autosize: true,
-        title: `Demand / Cash Flow per Period<br>Min: ${distMin.toLocaleString("en-US")}; Mode: ${distMode.toLocaleString("en-US")}<br>Max: ${distMax.toLocaleString("en-US")}`,
         plot_bgcolor: "white",
         paper_bgcolor: "white",
         font: {

@@ -70,10 +70,9 @@ export default function DataForm() {
   // define submit handler
   function onSubmit(values: z.infer<typeof formSchema>) {
     const { distMin, distMean, distSD, distMax, simPeriodsPerYear } = values;
-    console.log({ distMin, distMean, distSD, distMax, simPeriodsPerYear });
-    // router.push(
-    //   `/results?distMin=${distMin}&distMean=${distMean}&distMax=${distMax}&simPeriodsPerYear=${simPeriodsPerYear}`,
-    // );
+    router.push(
+      `/results/truncnorm?distMin=${distMin}&distMean=${distMean}&distSD=${distSD}&distMax=${distMax}&simPeriodsPerYear=${simPeriodsPerYear}`,
+    );
   }
 
   return (

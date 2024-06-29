@@ -20,10 +20,13 @@ export default async function TriangularResults() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  // get query params
   const distMin = Number(searchParams.get("distMin"));
   const distMode = Number(searchParams.get("distMode"));
   const distMax = Number(searchParams.get("distMax"));
   const simPeriodsPerYear = Number(searchParams.get("simPeriodsPerYear"));
+
+  // validate query params
   if (!distMin || !distMode || !distMax || !simPeriodsPerYear) {
     router.push("/");
   }
@@ -61,19 +64,14 @@ export default async function TriangularResults() {
           <h2 className="text-center text-2xl font-bold">
             Selected Distribution: Triangular
           </h2>
-          <DistPlot
-            distValues={distValues}
-            distMin={distMin}
-            distMode={distMode}
-            distMax={distMax}
-          />
-          <SimPlot
-            simValues={simValues}
-            distMin={distMin}
-            distMode={distMode}
-            distMax={distMax}
-            simPeriodsPerYear={simPeriodsPerYear}
-          />
+          <section className="flex flex-row justify-between gap-8 p-8">
+            <p>Min: {distMin}</p>
+            <p>Mode: {distMode}</p>
+            <p>Max: {distMax}</p>
+          </section>
+
+          <DistPlot distValues={distValues} />
+          <SimPlot simValues={simValues} />
           <SimStats
             simMin={simMin}
             simQ1={simQ1}
