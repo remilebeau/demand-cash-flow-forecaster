@@ -11,12 +11,12 @@ export default async function ResultsPage() {
   const DistPlot = dynamic(() => import("@/components/DistPlot"), {
     ssr: false,
   });
-  const SimPlotWithStats = dynamic(
-    () => import("@/components/SimPlotWithStats"),
-    {
-      ssr: false,
-    },
-  );
+  const SimPlot = dynamic(() => import("@/components/SimPlot"), {
+    ssr: false,
+  });
+  const SimStats = dynamic(() => import("@/components/SimStats"), {
+    ssr: false,
+  });
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -53,20 +53,22 @@ export default async function ResultsPage() {
             distMode={distMode}
             distMax={distMax}
           />
-          <SimPlotWithStats
+          <SimPlot
             simValues={simValues}
-            simMin={simMin}
-            simMax={simMax}
-            simMean={simMean}
-            simQ1={simQ1}
-            simQ2={simQ2}
-            simQ3={simQ3}
-            lowerCI={lowerCI}
-            upperCI={upperCI}
             distMin={distMin}
             distMode={distMode}
             distMax={distMax}
             simPeriodsPerYear={simPeriodsPerYear}
+          />
+          <SimStats
+            simMin={simMin}
+            simQ1={simQ1}
+            simMean={simMean}
+            simQ2={simQ2}
+            simQ3={simQ3}
+            simMax={simMax}
+            lowerCI={lowerCI}
+            upperCI={upperCI}
           />
           <ThemeSwitch />
         </main>
