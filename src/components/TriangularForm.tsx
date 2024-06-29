@@ -65,7 +65,7 @@ export default function DataForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     const { distMin, distMode, distMax, simPeriodsPerYear } = values;
     router.push(
-      `/results?distMin=${distMin}&distMode=${distMode}&distMax=${distMax}&simPeriodsPerYear=${simPeriodsPerYear}`,
+      `/results/triangular?&distMin=${distMin}&distMode=${distMode}&distMax=${distMax}&simPeriodsPerYear=${simPeriodsPerYear}`,
     );
   }
 

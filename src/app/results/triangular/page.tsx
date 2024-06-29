@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 
-export default async function ResultsPage() {
+export default async function TriangularResults() {
   // client component imports
   const DistPlot = dynamic(() => import("@/components/DistPlot"), {
     ssr: false,
@@ -28,7 +28,12 @@ export default async function ResultsPage() {
     router.push("/");
   }
 
-  const { distValues } = await getDistValues(distMin, distMode, distMax);
+  const { distValues } = await getDistValues(
+    "triangular",
+    distMin,
+    distMode,
+    distMax,
+  );
   const {
     simValues,
     simMin,
@@ -39,7 +44,13 @@ export default async function ResultsPage() {
     simQ3,
     lowerCI,
     upperCI,
-  } = await getSimValues(distMin, distMode, distMax, simPeriodsPerYear);
+  } = await getSimValues(
+    "triangular",
+    distMin,
+    distMode,
+    distMax,
+    simPeriodsPerYear,
+  );
 
   return (
     <>
@@ -47,6 +58,9 @@ export default async function ResultsPage() {
         <main className="mx-auto flex max-w-4xl flex-col gap-8 p-8">
           <Button onClick={() => router.push("/")}>Go Back</Button>
           <h1 className="text-center text-3xl font-bold">Results</h1>
+          <h2 className="text-center text-2xl font-bold">
+            Selected Distribution: Triangular
+          </h2>
           <DistPlot
             distValues={distValues}
             distMin={distMin}

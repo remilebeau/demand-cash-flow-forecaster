@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export default function SelectDistributionribution() {
+export default function DataForm() {
   // client component imports
   const BootstrapForm = dynamic(() => import("./BootstrapForm"), {
     ssr: false,
