@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import getDistValues from "@/lib/getDistValues";
-import getSimValues from "@/lib/getSimValues";
+import getTriDistValues from "@/lib/getTriDistValues";
+import getTriSimValues from "@/lib/getTriSimValues";
 import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
@@ -31,12 +31,7 @@ export default async function TriangularResults() {
     router.push("/");
   }
 
-  const { distValues } = await getDistValues(
-    "triangular",
-    distMin,
-    distMode,
-    distMax,
-  );
+  const { distValues } = await getTriDistValues(distMin, distMode, distMax);
   const {
     simValues,
     simMin,
@@ -47,13 +42,7 @@ export default async function TriangularResults() {
     simQ3,
     lowerCI,
     upperCI,
-  } = await getSimValues(
-    "triangular",
-    distMin,
-    distMode,
-    distMax,
-    simPeriodsPerYear,
-  );
+  } = await getTriSimValues(distMin, distMode, distMax, simPeriodsPerYear);
 
   return (
     <>

@@ -21,10 +21,6 @@ const formSchema = z
       required_error: "Minimum is required",
       invalid_type_error: "Minimum must be a number",
     }),
-    distMode: z.coerce.number({
-      required_error: "Mode is required",
-      invalid_type_error: "Mode must be a number",
-    }),
     distMax: z.coerce.number({
       required_error: "Maximum is required",
       invalid_type_error: "Maximum must be a number",
@@ -34,16 +30,12 @@ const formSchema = z
       invalid_type_error: "Periods per year must be a number",
     }),
   })
-  // validate that min <= mode <= max and min < max and simPeriodsPerYear > 0
+  // validate that min < max and simPeriodsPerYear > 0
   .refine(
-    (fields) =>
-      fields.distMin <= fields.distMode &&
-      fields.distMode <= fields.distMax &&
-      fields.distMin < fields.distMax &&
-      fields.simPeriodsPerYear > 0,
+    (fields) => fields.distMin < fields.distMax && fields.simPeriodsPerYear > 0,
     {
       message:
-        "The following must be true: 1) min <= mode <= max 2) min < max and 3) simPeriodsPerYear > 0",
+        "Min must be less than max. Periods per year must be greater than 0",
       path: ["simPeriodsPerYear"],
     },
   );
@@ -55,7 +47,6 @@ export default function DataForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       distMin: undefined,
-      distMode: undefined,
       distMax: undefined,
       simPeriodsPerYear: undefined,
     },
@@ -63,9 +54,9 @@ export default function DataForm() {
 
   // define submit handler
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const { distMin, distMode, distMax, simPeriodsPerYear } = values;
+    const { distMin, distMax, simPeriodsPerYear } = values;
     router.push(
-      `/results?distMin=${distMin}&distMode=${distMode}&distMax=${distMax}&simPeriodsPerYear=${simPeriodsPerYear}`,
+      `/results/uniform?distMin=${distMin}&distMax=${distMax}&simPeriodsPerYear=${simPeriodsPerYear}`,
     );
   }
 
@@ -81,23 +72,6 @@ export default function DataForm() {
                 <Input
                   type="number"
                   placeholder="Minimum demand / cash flow per period"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="distMode"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Expected demand / cash flow per period"
                   {...field}
                 />
               </FormControl>

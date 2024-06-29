@@ -1,5 +1,4 @@
 export async function getSimValues(
-  distribution: string,
   distMin: number,
   distMode: number,
   distMax: number,
@@ -7,7 +6,7 @@ export async function getSimValues(
 ) {
   const DATA_URL =
     process.env.NODE_ENV === "production"
-      ? `https://simulation-api-t28w.onrender.com/api/simulations/${distribution}?distMin=${distMin}&distMode=${distMode}&distMax=${distMax}&simPeriodsPerYear=${simPeriodsPerYear}`
+      ? `https://simulation-api-t28w.onrender.com/api/simulations/triangular?distMin=${distMin}&distMode=${distMode}&distMax=${distMax}&simPeriodsPerYear=${simPeriodsPerYear}`
       : `http://localhost:8000/api/simulations/triangular?distMin=${distMin}&distMode=${distMode}&distMax=${distMax}&simPeriodsPerYear=${simPeriodsPerYear}`;
   const res = await fetch(DATA_URL, {
     method: "GET",

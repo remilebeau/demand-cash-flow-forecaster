@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import getDistValues from "@/lib/getDistValues";
-import getSimValues from "@/lib/getSimValues";
+import getTNormDistValues from "@/lib/getTNormDistValues";
+import getTNormSimValues from "@/lib/getTNormSimValues";
 import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
@@ -39,10 +39,10 @@ export default async function TruncNormResults() {
     router.push("/");
   }
 
-  const { distValues } = await getDistValues(
-    "truncated_normal",
+  const { distValues } = await getTNormDistValues(
     distMin,
     distMean,
+    distSD,
     distMax,
   );
   const {
@@ -55,10 +55,10 @@ export default async function TruncNormResults() {
     simQ3,
     lowerCI,
     upperCI,
-  } = await getSimValues(
-    "truncated_normal",
+  } = await getTNormSimValues(
     distMin,
     distMean,
+    distSD,
     distMax,
     simPeriodsPerYear,
   );
