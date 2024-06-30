@@ -11,9 +11,6 @@ import {
 
 export default function DataForm() {
   // client component imports
-  const BootstrapForm = dynamic(() => import("./BootstrapForm"), {
-    ssr: false,
-  });
   const TriangularForm = dynamic(() => import("./TriangularForm"), {
     ssr: false,
   });
@@ -37,14 +34,12 @@ export default function DataForm() {
           <SelectValue placeholder="Select a distribution" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="bootstrap">Bootstrap</SelectItem>
           <SelectItem value="triangular">Triangular</SelectItem>
           <SelectItem value="truncnorm">Truncated Normal</SelectItem>
           <SelectItem value="uniform">Uniform</SelectItem>
         </SelectContent>
       </Select>
 
-      {distribution === "bootstrap" && <BootstrapForm />}
       {distribution === "triangular" && <TriangularForm />}
       {distribution === "truncnorm" && <TruncNormForm />}
       {distribution === "uniform" && <UniformForm />}

@@ -40,7 +40,7 @@ const formSchema = z
     },
   );
 
-export default function DataForm() {
+export default function UniformForm() {
   const router = useRouter();
   // define form
   const form = useForm<z.infer<typeof formSchema>>({
