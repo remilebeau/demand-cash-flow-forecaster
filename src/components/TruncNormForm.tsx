@@ -86,7 +86,7 @@ export default function TruncNormForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Minimum demand / cash flow per period"
+                  placeholder="Minimum cash flow (or demand) per period"
                   {...field}
                 />
               </FormControl>
@@ -103,23 +103,7 @@ export default function TruncNormForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Expected demand / cash flow per period"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="distSD"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Standard deviation of demand / cash flow per period"
+                  placeholder="Expected cash flow (or demand) per period"
                   {...field}
                 />
               </FormControl>
@@ -136,7 +120,23 @@ export default function TruncNormForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Maximum demand / cash flow per period"
+                  placeholder="Maximum cash flow (or demand) per period"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="distSD"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  type="number"
+                  placeholder="Standard deviation of cash flow (or demand) per period"
                   {...field}
                 />
               </FormControl>

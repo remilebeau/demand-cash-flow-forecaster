@@ -80,7 +80,7 @@ export default function TriangularForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Minimum demand / cash flow per period"
+                  placeholder="Minimum cash flow (or demand) per period"
                   {...field}
                 />
               </FormControl>
@@ -97,7 +97,7 @@ export default function TriangularForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Expected demand / cash flow per period"
+                  placeholder="Expected cash flow (or demand) per period"
                   {...field}
                 />
               </FormControl>
@@ -114,7 +114,7 @@ export default function TriangularForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Maximum demand / cash flow per period"
+                  placeholder="Maximum cash flow (or demand) per period"
                   {...field}
                 />
               </FormControl>
