@@ -68,7 +68,6 @@ export default async function TriangularResults() {
           <DistPlot distValues={distValues} />
           <h2 className="text-2xl">Simulation Results</h2>
           <p className="text-xl">Periods per Year: {simPeriodsPerYear}</p>
-
           <SimPlot simValues={simValues} />
           <SimStats
             simMin={simMin}

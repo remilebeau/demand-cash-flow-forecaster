@@ -74,6 +74,9 @@ export default async function TruncNormResults() {
             Go Back
           </Button>
           <h1 className="text-center text-3xl">Results</h1>
+          <h2 className="text-2xl font-bold">
+            Distribution of Periodic Cash Flows
+          </h2>
           <section className="grid grid-cols-2 gap-4 p-4">
             <p className="text-xl">Distribution: Truncated Normal</p>
             <p className="text-xl">Min: {distMin}</p>
@@ -81,8 +84,10 @@ export default async function TruncNormResults() {
             <p className="text-xl">Max: {distMax}</p>
             <p className="text-xl">Standard Deviation: {distSD}</p>
           </section>
-
           <DistPlot distValues={distValues} />
+
+          <h2 className="text-2xl">Simulation Results</h2>
+          <p className="text-xl">Periods per Year: {simPeriodsPerYear}</p>
           <SimPlot simValues={simValues} />
           <SimStats
             simMin={simMin}
