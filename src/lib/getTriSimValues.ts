@@ -1,4 +1,4 @@
-export async function getSimValues(
+export async function getTriSimValues(
   distMin: number,
   distMode: number,
   distMax: number,
@@ -17,4 +17,4 @@ export async function getSimValues(
   return res.json();
 }
 
-export default getSimValues;
+export default getTriSimValues;
