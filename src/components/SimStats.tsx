@@ -20,7 +20,7 @@ export default function SimStats({
   upperCI,
 }: Props) {
   return (
-    <article className="flex w-full flex-col rounded-md border p-2">
+    <article className="flex w-full flex-col rounded-md border p-2 font-bold">
       <h2 className="text-center">Simulation Statistics</h2>
       <section id="min" className="flex flex-row justify-between">
         <p>Minimum:</p>
