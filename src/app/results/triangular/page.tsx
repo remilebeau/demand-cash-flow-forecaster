@@ -48,23 +48,26 @@ export default async function TriangularResults() {
     <>
       {distValues && simValues && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
-          <Button onClick={() => router.push("/")}>Go Back</Button>
+          <Button
+            className="text-3xl font-bold"
+            onClick={() => router.push("/")}
+          >
+            Go Back
+          </Button>
           <h1 className="text-center text-3xl font-bold">Results</h1>
           <h2 className="text-2xl font-bold">
             Distribution of Periodic Cash Flows
           </h2>
           <section className="grid grid-cols-2 gap-4 p-4">
-            <p className="text-xl font-bold">Distribution: Triangular</p>
-            <p className="text-xl font-bold">Min: {distMin}</p>
-            <p className="text-xl font-bold">Mode: {distMode}</p>
-            <p className="text-xl font-bold">Max: {distMax}</p>
+            <p className="text-xl">Distribution: Triangular</p>
+            <p className="text-xl">Min: {distMin}</p>
+            <p className="text-xl">Mode: {distMode}</p>
+            <p className="text-xl">Max: {distMax}</p>
           </section>
 
           <DistPlot distValues={distValues} />
-          <h2 className="text-2xl font-bold">Simulation Results</h2>
-          <p className="text-xl font-bold">
-            Periods per Year: {simPeriodsPerYear}
-          </p>
+          <h2 className="text-2xl">Simulation Results</h2>
+          <p className="text-xl">Periods per Year: {simPeriodsPerYear}</p>
 
           <SimPlot simValues={simValues} />
           <SimStats

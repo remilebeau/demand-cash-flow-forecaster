@@ -66,17 +66,20 @@ export default async function TruncNormResults() {
   return (
     <>
       {distValues && simValues && (
-        <main className="mx-auto flex max-w-4xl flex-col gap-8 p-8">
-          <Button onClick={() => router.push("/")}>Go Back</Button>
-          <h1 className="text-center text-3xl font-bold">Results</h1>
-          <h2 className="text-center text-2xl font-bold">
-            Selected Distribution: Truncated Normal
-          </h2>
-          <section className="flex flex-row justify-evenly gap-8 p-8">
-            <p>Min: {distMin}</p>
-            <p>Mean: {distMean}</p>
-            <p>SD: {distSD}</p>
-            <p>Max: {distMax}</p>
+        <main className="mx-auto flex max-w-4xl flex-col gap-8 p-8 font-bold">
+          <Button
+            className="text-3xl font-bold"
+            onClick={() => router.push("/")}
+          >
+            Go Back
+          </Button>
+          <h1 className="text-center text-3xl">Results</h1>
+          <section className="grid grid-cols-2 gap-4 p-4">
+            <p className="text-xl">Distribution: Truncated Normal</p>
+            <p className="text-xl">Min: {distMin}</p>
+            <p className="text-xl">Mean: {distMean}</p>
+            <p className="text-xl">Max: {distMax}</p>
+            <p className="text-xl">Standard Deviation: {distSD}</p>
           </section>
 
           <DistPlot distValues={distValues} />
